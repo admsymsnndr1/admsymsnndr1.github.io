@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BPOM Command Center case study · Adam Syamsinendra</title>
+    <meta name="title-en" content="BPOM Command Center case study · Adam Syamsinendra">
+    <meta name="title-id" content="Studi kasus BPOM Command Center · Adam Syamsinendra">
+    <meta name="description" content="Bringing 101 application dashboards into one real-time executive command center for BPOM.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234f46e5'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='16' text-anchor='middle' fill='white'%3EAS%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <script>
+        (function () {
+            var r = document.documentElement, l = null, t = null;
+            try { l = localStorage.getItem('lang'); t = localStorage.getItem('theme'); } catch (e) {}
+            r.setAttribute('data-lang', l || ((navigator.language || 'en').toLowerCase().indexOf('id') === 0 ? 'id' : 'en'));
+            r.setAttribute('data-theme', t || (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+        })();
+    </script>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <a href="../index.html" class="logo">Adam<span>.</span></a>
+        <div class="toolbar">
+            <button type="button" class="icon-btn" data-lang-toggle>ID</button>
+            <button type="button" class="icon-btn" data-theme-toggle aria-label="Toggle dark mode">
+                <svg class="theme-light-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                <svg class="theme-dark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="case-hero">
+        <div class="container">
+            <a class="back" href="../index.html#work">← <span lang="en">All case studies</span><span lang="id">Semua studi kasus</span></a>
+            <h1>BPOM Command Center</h1>
+            <p class="lead">
+                <span lang="en">A strategic executive dashboard that brings the dashboards of BPOM's applications together in one real-time command center.</span>
+                <span lang="id">Dashboard eksekutif strategis yang menyatukan dashboard aplikasi-aplikasi BPOM dalam satu command center real-time.</span>
+            </p>
+            <dl class="facts">
+                <div><dt><span lang="en">Role</span><span lang="id">Peran</span></dt><dd>Team Lead</dd></div>
+                <div><dt><span lang="en">Team</span><span lang="id">Tim</span></dt><dd><span lang="en">3 people + PM</span><span lang="id">3 orang + PM</span></dd></div>
+                <div><dt><span lang="en">Reach</span><span lang="id">Jangkauan</span></dt><dd><span lang="en">101 dashboards · 333 users</span><span lang="id">101 dashboard · 333 pengguna</span></dd></div>
+                <div><dt>Stack</dt><dd>Laravel · Docker · Tableau</dd></div>
+            </dl>
+        </div>
+    </section>
+
+    <article class="container prose">
+        <h2><span lang="en">The problem</span><span lang="id">Masalahnya</span></h2>
+        <p lang="en">
+            Each of BPOM's applications has its own dashboard, its own login and its own way of presenting numbers. For leadership,
+            getting an overall picture meant opening many systems one by one. The goal was one place where executives can see the
+            state of the agency's services at a glance and drill down when something needs attention.
+        </p>
+        <p lang="id">
+            Setiap aplikasi BPOM punya dashboard sendiri, login sendiri, dan cara sendiri dalam menyajikan angka. Bagi pimpinan, melihat
+            gambaran keseluruhan berarti membuka banyak sistem satu per satu. Tujuannya adalah satu tempat di mana pimpinan bisa melihat
+            kondisi layanan secara sekilas dan menelusuri lebih dalam saat ada yang perlu diperhatikan.
+        </p>
+
+        <h2><span lang="en">My role</span><span lang="id">Peran saya</span></h2>
+        <ul>
+            <li><span lang="en">Led a team of three with a project manager and a junior developer.</span><span lang="id">Memimpin tim tiga orang bersama project manager dan junior developer.</span></li>
+            <li><span lang="en">Designed and built the REST APIs that collect data from the source systems.</span><span lang="id">Merancang dan membangun REST API yang mengumpulkan data dari sistem-sistem sumber.</span></li>
+            <li><span lang="en">Integrated the Tableau visualisations into the command center and containerised the services with Docker.</span><span lang="id">Mengintegrasikan visualisasi Tableau ke dalam command center dan menjalankan layanan dalam container Docker.</span></li>
+        </ul>
+
+        <div class="diagram" aria-label="Data flow">
+            <svg viewBox="0 0 640 200" role="img">
+                <rect class="box" x="10" y="20" width="150" height="40" rx="8"/><text class="sub" x="85" y="45" text-anchor="middle">Application A</text>
+                <rect class="box" x="10" y="80" width="150" height="40" rx="8"/><text class="sub" x="85" y="105" text-anchor="middle">Application B</text>
+                <rect class="box" x="10" y="140" width="150" height="40" rx="8"/><text class="sub" x="85" y="165" text-anchor="middle">… 101 dashboards</text>
+
+                <rect class="box-brand" x="240" y="60" width="160" height="80" rx="12"/>
+                <text x="320" y="94" text-anchor="middle">Integration API</text>
+                <text class="sub" x="320" y="114" text-anchor="middle">Laravel · Docker</text>
+
+                <rect class="box" x="480" y="60" width="150" height="80" rx="12"/>
+                <text x="555" y="94" text-anchor="middle">Command Center</text>
+                <text class="sub" x="555" y="114" text-anchor="middle">Tableau views</text>
+
+                <path class="line" d="M160 40 C200 40 200 90 235 90"/><path class="arrow" d="M235 85 l8 5 -8 5z"/>
+                <path class="line" d="M160 100 H235"/><path class="arrow" d="M235 95 l8 5 -8 5z"/>
+                <path class="line" d="M160 160 C200 160 200 110 235 110"/><path class="arrow" d="M235 105 l8 5 -8 5z"/>
+                <path class="line" d="M400 100 H475"/><path class="arrow" d="M475 95 l8 5 -8 5z"/>
+            </svg>
+        </div>
+
+        <h2><span lang="en">Challenges</span><span lang="id">Tantangan</span></h2>
+        <ul>
+            <li><span lang="en"><strong>Many sources, many shapes.</strong> Each source system exposes its data differently, so the integration layer normalises it into one consistent format before it reaches the dashboard.</span><span lang="id"><strong>Banyak sumber, banyak format.</strong> Tiap sistem sumber menyajikan datanya dengan cara berbeda, jadi lapisan integrasi menyeragamkannya ke satu format sebelum sampai ke dashboard.</span></li>
+            <li><span lang="en"><strong>Executive-level clarity.</strong> The audience has little time, so every view starts with the headline number and offers detail only on demand.</span><span lang="id"><strong>Jelas untuk pimpinan.</strong> Penggunanya punya waktu terbatas, jadi setiap tampilan dimulai dari angka utama dan detail baru muncul saat dibutuhkan.</span></li>
+        </ul>
+
+        <h2><span lang="en">Results</span><span lang="id">Hasilnya</span></h2>
+        <ul>
+            <li><span lang="en"><strong>101 application dashboards</strong> available from one real-time command center.</span><span lang="id"><strong>101 dashboard aplikasi</strong> dapat diakses dari satu command center real-time.</span></li>
+            <li><span lang="en"><strong>333 users</strong> use it to follow the agency's services.</span><span lang="id"><strong>333 pengguna</strong> memakainya untuk memantau layanan BPOM.</span></li>
+        </ul>
+
+        <p class="note">
+            <span lang="en">Source code and internal data belong to the client and are not published. The diagram is simplified.</span>
+            <span lang="id">Kode sumber dan data internal milik klien dan tidak dipublikasikan. Diagram disederhanakan.</span>
+        </p>
+    </article>
+
+    <nav class="container next-case" aria-label="More case studies">
+        <a href="evortala.html">← EVORTALA</a>
+        <a href="tvri.html"><span lang="en">World Cup 2026 on-call</span><span lang="id">On-call Piala Dunia 2026</span> →</a>
+    </nav>
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <span>© <span data-year>2026</span> Adam Syamsinendra</span>
+        <a href="mailto:adamsyamsinendra@outlook.co.id">adamsyamsinendra@outlook.co.id</a>
+    </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

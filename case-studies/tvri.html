@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>World Cup 2026 on-call · Adam Syamsinendra</title>
+    <meta name="title-en" content="World Cup 2026 on-call · Adam Syamsinendra">
+    <meta name="title-id" content="On-call Piala Dunia 2026 · Adam Syamsinendra">
+    <meta name="description" content="Production support for TVRI's FIFA World Cup 2026 news portal, and how a full disk caused HTTP 500 errors.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234f46e5'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='16' text-anchor='middle' fill='white'%3EAS%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <script>
+        (function () {
+            var r = document.documentElement, l = null, t = null;
+            try { l = localStorage.getItem('lang'); t = localStorage.getItem('theme'); } catch (e) {}
+            r.setAttribute('data-lang', l || ((navigator.language || 'en').toLowerCase().indexOf('id') === 0 ? 'id' : 'en'));
+            r.setAttribute('data-theme', t || (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+        })();
+    </script>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <a href="../index.html" class="logo">Adam<span>.</span></a>
+        <div class="toolbar">
+            <button type="button" class="icon-btn" data-lang-toggle>ID</button>
+            <button type="button" class="icon-btn" data-theme-toggle aria-label="Toggle dark mode">
+                <svg class="theme-light-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                <svg class="theme-dark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="case-hero">
+        <div class="container">
+            <a class="back" href="../index.html#work">← <span lang="en">All case studies</span><span lang="id">Semua studi kasus</span></a>
+            <h1><span lang="en">On call for the World Cup</span><span lang="id">On-call selama Piala Dunia</span></h1>
+            <p class="lead">
+                <span lang="en">Keeping TVRI's FIFA World Cup 2026 news portal and its Android app running from the opening match to the final — and finding out why the site suddenly returned HTTP 500.</span>
+                <span lang="id">Menjaga portal berita Piala Dunia FIFA 2026 milik TVRI beserta aplikasi Android-nya tetap berjalan dari laga pembuka sampai final — termasuk mencari tahu kenapa situsnya tiba-tiba mengembalikan HTTP 500.</span>
+            </p>
+            <dl class="facts">
+                <div><dt><span lang="en">Role</span><span lang="id">Peran</span></dt><dd><span lang="en">On-call support &amp; CMS admin</span><span lang="id">On-call support &amp; admin CMS</span></dd></div>
+                <div><dt><span lang="en">Period</span><span lang="id">Periode</span></dt><dd><span lang="en">Jun – Jul 2026</span><span lang="id">Jun – Jul 2026</span></dd></div>
+                <div><dt><span lang="en">Audience</span><span lang="id">Audiens</span></dt><dd><span lang="en">21K+ installs · 10K+ MAU</span><span lang="id">21K+ instalasi · 10K+ MAU</span></dd></div>
+                <div><dt>Stack</dt><dd>Laravel · React · Node.js · MySQL</dd></div>
+            </dl>
+        </div>
+    </section>
+
+    <article class="container prose">
+        <h2><span lang="en">Context</span><span lang="id">Konteks</span></h2>
+        <p lang="en">
+            For the tournament, TVRI ran a dedicated news portal and an Android app, both fed by the same CMS API.
+            Traffic follows the match schedule: quiet most of the day, then sharp peaks around kick-off and final whistle.
+            Within the first 28 days the app reached more than 21,000 device acquisitions and 10,000 monthly active users.
+            My job was to keep everything up, investigate problems as they happened, and manage World Cup content in the CMS.
+        </p>
+        <p lang="id">
+            Selama turnamen, TVRI menjalankan portal berita khusus dan aplikasi Android yang sama-sama mengambil data dari satu CMS API.
+            Trafiknya mengikuti jadwal pertandingan: sepi hampir sepanjang hari, lalu melonjak tajam di sekitar kick-off dan peluit akhir.
+            Dalam 28 hari pertama aplikasi mencapai lebih dari 21.000 akuisisi perangkat dan 10.000 pengguna aktif bulanan.
+            Tugas saya menjaga semuanya tetap berjalan, menyelidiki masalah saat terjadi, dan mengelola konten Piala Dunia di CMS.
+        </p>
+
+        <h2><span lang="en">The incident: HTTP 500 everywhere</span><span lang="id">Insiden: HTTP 500 di mana-mana</span></h2>
+        <ol>
+            <li><span lang="en"><strong>Symptom.</strong> The portal and the CMS API started returning HTTP 500 errors.</span><span lang="id"><strong>Gejala.</strong> Portal dan CMS API mulai mengembalikan error HTTP 500.</span></li>
+            <li><span lang="en"><strong>Narrowing down.</strong> The application code had not changed, so I looked below it: the logs pointed at the database layer failing to write.</span><span lang="id"><strong>Mempersempit.</strong> Kode aplikasi tidak berubah, jadi saya memeriksa lapisan di bawahnya: log menunjukkan lapisan database gagal menulis.</span></li>
+            <li><span lang="en"><strong>Root cause.</strong> MySQL temporary files had filled the server's 40 GB root partition. With no free space, queries that needed temporary tables failed, and every request that depended on them returned 500.</span><span lang="id"><strong>Akar masalah.</strong> File temporary MySQL memenuhi partisi root server yang berukuran 40 GB. Tanpa ruang kosong, query yang butuh tabel sementara gagal, dan setiap request yang bergantung padanya mengembalikan 500.</span></li>
+            <li><span lang="en"><strong>Escalation.</strong> I reported the cause to the infrastructure team with a recommended fix: move MySQL's temporary directory and data off the small root partition and add disk-usage alerts.</span><span lang="id"><strong>Eskalasi.</strong> Saya melaporkan penyebabnya ke tim infrastruktur beserta rekomendasi perbaikan: memindahkan direktori temporary dan data MySQL dari partisi root yang kecil serta menambahkan peringatan penggunaan disk.</span></li>
+        </ol>
+
+        <div class="callout">
+            <span lang="en"><strong>Lesson:</strong> an HTTP 500 is often not an application bug. Checking disk, memory and the database before touching code saved hours during a live event.</span>
+            <span lang="id"><strong>Pelajaran:</strong> HTTP 500 sering kali bukan bug aplikasi. Memeriksa disk, memori, dan database sebelum menyentuh kode menghemat banyak waktu saat acara sedang berlangsung.</span>
+        </div>
+
+        <h2><span lang="en">Other work during the tournament</span><span lang="id">Pekerjaan lain selama turnamen</span></h2>
+        <ul>
+            <li><span lang="en">Monitored the CMS API that serves both the portal and the Android app.</span><span lang="id">Memantau CMS API yang melayani portal dan aplikasi Android.</span></li>
+            <li><span lang="en">Investigated CMS publishing failures and slow page loads.</span><span lang="id">Menyelidiki kegagalan publikasi di CMS dan halaman yang lambat dimuat.</span></li>
+            <li><span lang="en">Managed World Cup news content as CMS admin.</span><span lang="id">Mengelola konten berita Piala Dunia sebagai admin CMS.</span></li>
+        </ul>
+
+        <p class="note">
+            <span lang="en">Infrastructure details are simplified and internal systems are not named.</span>
+            <span lang="id">Detail infrastruktur disederhanakan dan sistem internal tidak disebutkan namanya.</span>
+        </p>
+    </article>
+
+    <nav class="container next-case" aria-label="More case studies">
+        <a href="bcc.html">← BPOM Command Center</a>
+        <a href="../index.html#projects"><span lang="en">Open-source projects</span><span lang="id">Proyek open source</span> →</a>
+    </nav>
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <span>© <span data-year>2026</span> Adam Syamsinendra</span>
+        <a href="mailto:adamsyamsinendra@outlook.co.id">adamsyamsinendra@outlook.co.id</a>
+    </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

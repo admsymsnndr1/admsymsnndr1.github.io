@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EVORTALA case study · Adam Syamsinendra</title>
+    <meta name="title-en" content="EVORTALA case study · Adam Syamsinendra">
+    <meta name="title-id" content="Studi kasus EVORTALA · Adam Syamsinendra">
+    <meta name="description" content="How I led the build of EVORTALA, a national platform used by 437 users across 83 BPOM units.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234f46e5'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='16' text-anchor='middle' fill='white'%3EAS%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <script>
+        (function () {
+            var r = document.documentElement, l = null, t = null;
+            try { l = localStorage.getItem('lang'); t = localStorage.getItem('theme'); } catch (e) {}
+            r.setAttribute('data-lang', l || ((navigator.language || 'en').toLowerCase().indexOf('id') === 0 ? 'id' : 'en'));
+            r.setAttribute('data-theme', t || (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+        })();
+    </script>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <a href="../index.html" class="logo">Adam<span>.</span></a>
+        <div class="toolbar">
+            <button type="button" class="icon-btn" data-lang-toggle>ID</button>
+            <button type="button" class="icon-btn" data-theme-toggle aria-label="Toggle dark mode">
+                <svg class="theme-light-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                <svg class="theme-dark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="case-hero">
+        <div class="container">
+            <a class="back" href="../index.html#work">← <span lang="en">All case studies</span><span lang="id">Semua studi kasus</span></a>
+            <h1>EVORTALA</h1>
+            <p class="lead">
+                <span lang="en">A national platform for monitoring and evaluating public service performance at BPOM, Indonesia's food and drug authority — used by every one of its 83 regional units.</span>
+                <span lang="id">Platform nasional untuk memantau dan mengevaluasi kinerja pelayanan publik di BPOM, digunakan oleh seluruh 83 unit kerjanya di daerah.</span>
+            </p>
+            <dl class="facts">
+                <div><dt><span lang="en">Role</span><span lang="id">Peran</span></dt><dd>Team Lead</dd></div>
+                <div><dt><span lang="en">Team</span><span lang="id">Tim</span></dt><dd><span lang="en">3 people + PM</span><span lang="id">3 orang + PM</span></dd></div>
+                <div><dt><span lang="en">Reach</span><span lang="id">Jangkauan</span></dt><dd><span lang="en">437 users · 83 units</span><span lang="id">437 pengguna · 83 unit</span></dd></div>
+                <div><dt>Stack</dt><dd>Laravel · MySQL · REST</dd></div>
+            </dl>
+        </div>
+    </section>
+
+    <article class="container prose">
+        <h2><span lang="en">The problem</span><span lang="id">Masalahnya</span></h2>
+        <p lang="en">
+            BPOM evaluates the public service quality of its 26 Balai Besar POM, 37 Balai POM and 20 Loka POM every year.
+            The evaluation spans several programmes — each with its own questionnaire, scoring rules and review flow — and the
+            results have to be signed off officially. An older system existed, but its data model no longer matched how the
+            evaluations were run, and it could not produce signed documents.
+        </p>
+        <p lang="id">
+            Setiap tahun BPOM mengevaluasi kualitas pelayanan publik di 26 Balai Besar POM, 37 Balai POM, dan 20 Loka POM.
+            Evaluasinya terdiri dari beberapa program — masing-masing punya kuesioner, aturan penilaian, dan alur review sendiri — dan
+            hasilnya harus disahkan secara resmi. Sistem lama sudah ada, tetapi struktur datanya tidak lagi sesuai dengan cara evaluasi
+            dijalankan dan tidak bisa menghasilkan dokumen bertanda tangan elektronik.
+        </p>
+
+        <h2><span lang="en">My role</span><span lang="id">Peran saya</span></h2>
+        <ul>
+            <li><span lang="en">Led a team of three (with a project manager and a support developer) and owned the system architecture and technical decisions.</span><span lang="id">Memimpin tim tiga orang (bersama project manager dan support developer) serta memegang arsitektur sistem dan keputusan teknis.</span></li>
+            <li><span lang="en">Designed the new schema, wrote the migration from the legacy database and built most of the evaluation modules.</span><span lang="id">Merancang skema baru, menulis migrasi dari database lama, dan membangun sebagian besar modul evaluasi.</span></li>
+            <li><span lang="en">Worked through the client's System Integration Test findings until sign-off, and wrote user documentation per role.</span><span lang="id">Menyelesaikan temuan System Integration Test dari klien sampai disetujui, serta menyusun panduan pengguna per role.</span></li>
+        </ul>
+
+        <h2><span lang="en">What we built</span><span lang="id">Yang kami bangun</span></h2>
+        <p>
+            <span lang="en">Six evaluation modules on one shared foundation of units, periods, roles and approvals:</span>
+            <span lang="id">Enam modul evaluasi di atas satu fondasi bersama (unit kerja, periode, role, dan persetujuan):</span>
+        </p>
+        <ul class="chips" style="margin-bottom:20px">
+            <li class="chip">PEKPPP</li><li class="chip">KIP Monitoring</li><li class="chip">MPP Monitoring</li>
+            <li class="chip">UPT Evaluation</li><li class="chip">Inclusive Services</li><li class="chip">KOIN BPOM</li>
+        </ul>
+
+        <div class="diagram" aria-label="High-level architecture">
+            <svg viewBox="0 0 640 220" role="img">
+                <rect class="box" x="10" y="80" width="130" height="60" rx="10"/>
+                <text x="75" y="106" text-anchor="middle">83 units</text>
+                <text class="sub" x="75" y="124" text-anchor="middle">fill in &amp; upload</text>
+
+                <rect class="box-brand" x="210" y="20" width="220" height="180" rx="12"/>
+                <text x="320" y="46" text-anchor="middle">EVORTALA (Laravel)</text>
+                <rect class="box" x="230" y="62" width="180" height="34" rx="8"/>
+                <text class="sub" x="320" y="84" text-anchor="middle">6 evaluation modules</text>
+                <rect class="box" x="230" y="104" width="180" height="34" rx="8"/>
+                <text class="sub" x="320" y="126" text-anchor="middle">scoring · review · approval</text>
+                <rect class="box" x="230" y="146" width="180" height="34" rx="8"/>
+                <text class="sub" x="320" y="168" text-anchor="middle">roles per unit &amp; period</text>
+
+                <rect class="box" x="500" y="30" width="130" height="60" rx="10"/>
+                <text x="565" y="56" text-anchor="middle">e-Signature</text>
+                <text class="sub" x="565" y="74" text-anchor="middle">signed reports</text>
+                <rect class="box" x="500" y="130" width="130" height="60" rx="10"/>
+                <text x="565" y="156" text-anchor="middle">One-Data API</text>
+                <text class="sub" x="565" y="174" text-anchor="middle">master data</text>
+
+                <path class="line" d="M140 110 H205"/><path class="arrow" d="M205 105 l8 5 -8 5z"/>
+                <path class="line" d="M430 80 C465 80 465 60 495 60"/><path class="arrow" d="M495 55 l8 5 -8 5z"/>
+                <path class="line" d="M430 140 C465 140 465 160 495 160"/><path class="arrow" d="M495 155 l8 5 -8 5z"/>
+            </svg>
+        </div>
+
+        <h2><span lang="en">Challenges &amp; how we solved them</span><span lang="id">Tantangan &amp; solusinya</span></h2>
+
+        <p><strong><span lang="en">An outbound HTTP client on a server without cURL.</span><span lang="id">HTTP client keluar di server tanpa cURL.</span></strong></p>
+        <p lang="en">
+            The production server had cURL disabled for security reasons, which broke every library we would normally use to call
+            the e-signature service and the One-Data API. Instead of asking for an exception, I wrote a small HTTP client on top of
+            PHP stream wrappers with the same interface the rest of the code expected — including multipart uploads for documents
+            and proper timeout and TLS handling — so the integrations work within the server's security policy.
+        </p>
+        <p lang="id">
+            cURL di server produksi dinonaktifkan demi keamanan, sehingga semua library yang biasa dipakai untuk memanggil layanan
+            tanda tangan elektronik dan API One-Data tidak bisa berjalan. Daripada meminta pengecualian, saya menulis HTTP client kecil
+            berbasis stream wrapper PHP dengan antarmuka yang sama seperti yang dipakai kode lainnya — termasuk upload multipart untuk
+            dokumen serta penanganan timeout dan TLS — sehingga integrasi tetap berjalan sesuai kebijakan keamanan server.
+        </p>
+
+        <p><strong><span lang="en">Migrating years of legacy data.</span><span lang="id">Migrasi data lama bertahun-tahun.</span></strong></p>
+        <p lang="en">
+            The new schema had to accept the history from the old system without losing scores that had already been published.
+            I mapped the old tables to the new model, ran the migration repeatedly against copies of production, and compared
+            totals per unit and per period before and after, so every difference could be explained before go-live.
+        </p>
+        <p lang="id">
+            Skema baru harus menampung riwayat dari sistem lama tanpa kehilangan nilai yang sudah dipublikasikan. Saya memetakan tabel
+            lama ke model baru, menjalankan migrasi berulang kali pada salinan data produksi, dan membandingkan total per unit dan per
+            periode sebelum dan sesudah migrasi, sehingga setiap selisih bisa dijelaskan sebelum go-live.
+        </p>
+
+        <p><strong><span lang="en">Many roles, one consistent workflow.</span><span lang="id">Banyak role, satu alur yang konsisten.</span></strong></p>
+        <p lang="en">
+            Units fill in the evaluation, central reviewers score it, heads of unit approve it. Each module differs in the details,
+            so the shared parts — periods, unit hierarchy, role checks and approval states — live in one foundation, and each module
+            only adds its own questionnaire and scoring.
+        </p>
+        <p lang="id">
+            Unit kerja mengisi evaluasi, reviewer pusat memberi nilai, kepala unit menyetujui. Detail tiap modul berbeda, jadi bagian
+            yang sama — periode, hierarki unit, pengecekan role, dan status persetujuan — ditempatkan dalam satu fondasi, dan tiap modul
+            hanya menambahkan kuesioner dan aturan penilaiannya sendiri.
+        </p>
+
+        <h2><span lang="en">Results</span><span lang="id">Hasilnya</span></h2>
+        <ul>
+            <li><span lang="en"><strong>437 users across all 83 units</strong> run their evaluations in one system.</span><span lang="id"><strong>437 pengguna di seluruh 83 unit</strong> menjalankan evaluasi dalam satu sistem.</span></li>
+            <li><span lang="en">Evaluation documents are signed electronically instead of printed and signed by hand.</span><span lang="id">Dokumen evaluasi ditandatangani secara elektronik, tidak lagi dicetak dan ditandatangani manual.</span></li>
+            <li><span lang="en">Legacy data moved to the new schema and the client's SIT findings were resolved before go-live.</span><span lang="id">Data lama berhasil dipindahkan ke skema baru dan temuan SIT dari klien diselesaikan sebelum go-live.</span></li>
+        </ul>
+
+        <div class="callout">
+            <span lang="en"><strong>What I'd take to the next project:</strong> agree on the data model with the client before building screens. Most late changes in this project came from evaluation rules that only surfaced during testing.</span>
+            <span lang="id"><strong>Pelajaran untuk proyek berikutnya:</strong> sepakati model data dengan klien sebelum membangun tampilan. Sebagian besar perubahan di akhir proyek ini berasal dari aturan evaluasi yang baru muncul saat pengujian.</span>
+        </div>
+
+        <p class="note">
+            <span lang="en">Source code and internal data belong to the client and are not published. Figures are taken from the live system.</span>
+            <span lang="id">Kode sumber dan data internal milik klien dan tidak dipublikasikan. Angka diambil dari sistem yang berjalan.</span>
+        </p>
+    </article>
+
+    <nav class="container next-case" aria-label="More case studies">
+        <a href="../index.html#work">← <span lang="en">All case studies</span><span lang="id">Semua studi kasus</span></a>
+        <a href="bcc.html">BPOM Command Center →</a>
+    </nav>
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <span>© <span data-year>2026</span> Adam Syamsinendra</span>
+        <a href="mailto:adamsyamsinendra@outlook.co.id">adamsyamsinendra@outlook.co.id</a>
+    </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
